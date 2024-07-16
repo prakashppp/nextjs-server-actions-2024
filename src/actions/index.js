@@ -4,6 +4,14 @@ import connectToDB from "@/database";
 import User from "@/models/user";
 import { revalidatePath } from "next/cache";
 
+
+export async function fetchListOfProducts(){
+  const res = await fetch("https://dummyjson.com/products")
+  const data = await res.json();
+
+  return data?.products;
+} 
+
 //add new user action
 
 export async function addNewUserAction(formData, pathToRevalidate) {
